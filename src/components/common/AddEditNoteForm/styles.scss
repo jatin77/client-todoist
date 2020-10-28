@@ -1,0 +1,29 @@
+form {
+  margin-bottom: 1rem;
+  .addEditForm {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 10px 0;
+
+    input {
+      width: 100%;
+      background: transparent;
+    }
+    &__picker {
+      display: flex;
+      align-items: flex-end;
+    }
+    &__btns {
+      display: flex;
+      align-items: center;
+      .save-btn {
+        background: #db4c3f;
+        color: #fff;
+        &:hover {
+          background: #db4c3f;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

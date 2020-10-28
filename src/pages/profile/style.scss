@@ -1,0 +1,33 @@
+.me-list {
+  padding: 0;
+  list-style: none;
+  li {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: baseline;
+  }
+  li:first-child {
+    margin-top: 2rem;
+  }
+  li {
+    margin-bottom: 1rem;
+  }
+  input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: transparent;
+    width: fit-content;
+  }
+  .descText {
+    position: relative;
+
+    .editIcon {
+      position: absolute;
+      top: -9px;
+    }
+  }
+  .changePassword-btn {
+    width: fit-content;
+  }
+}

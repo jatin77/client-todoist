@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,500,500i,600,600i,700,700i&display=swap");
+@import "StyleFunctions";
+@import "Typography";
+@import "ColorPalette.scss";
+
+@include themify($themes) {
+  color: themed("textColor");
+  background-color: themed("backgroundColor");
+}
+
+html,
+body {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.guestLanding__auth,
+.landingSlides {
+  @include themify($themes) {
+    background: themed("backgroundColor");
+  }
+}
+a {
+  text-decoration: none !important;
+}
+p,
+a {
+  margin: 0 !important;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none !important;
+  border: none;
+}
+
+// Global custom classes
+
+// Global text styles
+.t-text {
+  @include themify($themes) {
+    color: themed("textColor");
+  }
+}
+.t-text-lead {
+  color: $lead-color;
+}
+
+// Small Link Heading
+.t_heading-smLink {
+  @include text-setting("lg");
+  font-weight: 900;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.t_heading-smLink:hover::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 50%;
+  @include themify($themes) {
+    background: themed("headingBorderColor");
+  }
+  bottom: 0;
+}
+.t_heading-smLink-active:before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 50%;
+  @include themify($themes) {
+    background: themed("headingBorderColor");
+  }
+  bottom: 0;
+}
+
+// Description
+.t-desc {
+  @include themify($themes) {
+    color: themed("descColor");
+  }
+}
+.t_desc-base {
+  @include text-setting("base");
+}
+
+// Large Heading
+.t_heading-lg {
+  @include text-setting("xxxl");
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+// Form Wrap
+.t__form-fields-wrap {
+  box-shadow: $form-inputFields_bxShadow;
+}
+// Input Styles
+
+* :focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.t__label {
+  display: block;
+  text-align: left;
+  @include text-setting("sm");
+  color: $secondary-color;
+  margin: 0 !important;
+  text-transform: capitalize;
+  text-transform: capitalize;
+}
+
+.t__form-group {
+  overflow: hidden;
+  position: relative;
+  @include themify($themes) {
+    background: themed("backgroundColor");
+  }
+  color: #000;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border: 1px solid #ccc;
+}
+
+.t__input {
+  width: 100%;
+  padding-left: 0;
+  background: none;
+  border: none;
+  @include text-setting("sm");
+  font-weight: bold;
+
+  /*Some sibling magic happens */
+  &:focus + .t__grow {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.t__grow {
+  height: 100%;
+  width: 6px;
+  background: $lead-gradient;
+  display: block;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: all 0.15s cubic-bezier(0, 0, 0.52, 1.11);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.t__btn {
+  background: $lead-gradient;
+  color: #fff;
+  display: block;
+  text-transform: capitalize;
+  box-shadow: $btn-bxShadow;
+}
+.t__btn-lg {
+  width: 100%;
+  padding: 0.7rem 0;
+}
+// Form inputs end

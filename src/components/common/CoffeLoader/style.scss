@@ -1,0 +1,205 @@
+// Settings
+$dimension-origin: 74px;
+$cup-holder: 17px;
+
+$smoke-margin: 15px;
+$smoke-margin-left: percentage($smoke-margin/$dimension-origin);
+$smoke-width: $cup-holder + $smoke-margin;
+$smoke-container: 100% - percentage($smoke-width/$dimension-origin);
+$smoke-item-width: percentage(4px / $smoke-width);
+$smoke-item-short-height: 20px;
+$smoke-item-long-height: 30px;
+$smoke-color: #000;
+$smoke-timing-function: ease;
+$smoke-animation-duration: 1.5s;
+$smoke-animation-delay: 0.2s;
+$smoke-animation-iteration-count: infinite;
+
+$wave-width: 100% - percentage($cup-holder/$dimension-origin);
+$wave-height: 80%;
+$wave-color: #623007;
+$wave-animation-duration: 0.5s;
+$wave-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+$size-lists: extra-small small medium large;
+
+input[type="radio"] {
+  display: none;
+}
+
+.size-picker {
+  width: 400px;
+  height: 70px;
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #ffab40;
+  border-radius: 3px;
+
+  &__label {
+    font-size: 0;
+    position: relative;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3) inset;
+    cursor: pointer;
+
+    &:before {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      font: 700 14px/14px Handlee;
+      padding-top: 10px;
+      white-space: nowrap;
+      text-transform: capitalize;
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      content: "✓";
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+      width: 15px;
+      color: #fff;
+      font-size: 30px;
+      transform: rotate(10deg);
+      display: none;
+    }
+  }
+}
+
+.cup {
+  margin-top: $smoke-item-long-height * 2;
+  position: relative;
+  width: $dimension-origin;
+}
+.cup-image {
+  position: relative;
+  z-index: 2;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: $wave-width;
+  height: $wave-height;
+  background-color: $wave-color;
+  border-radius: 0 0 40% 40%;
+  animation: waveUp $wave-animation-duration $wave-timing-function;
+
+  &__path {
+    stroke: none;
+    fill: white;
+  }
+}
+
+.smoke {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-left: $smoke-margin-left/2;
+  width: $smoke-container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    opacity: 0;
+    width: $smoke-item-width;
+    background-color: $smoke-color;
+    animation: {
+      duration: $smoke-animation-duration;
+      timing-function: $smoke-timing-function;
+      iteration-count: $smoke-animation-iteration-count;
+    }
+
+    &:nth-child(2) {
+      animation-delay: $wave-animation-duration;
+    }
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      animation-delay: $wave-animation-duration + $smoke-animation-delay;
+    }
+  }
+}
+
+@keyframes waveUp {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: $wave-height;
+  }
+}
+
+@each $size in $size-lists {
+  $i: index($size-lists, $size);
+
+  .radio-#{$size}:checked {
+    ~ .size-picker .size-picker__label--#{$size} {
+      &:after {
+        display: block;
+      }
+    }
+
+    ~ .cup {
+      width: $dimension-origin * $i;
+      margin: 60px auto 0 auto;
+
+      .smoke {
+        &__item {
+          height: $smoke-item-short-height * $i;
+
+          &:nth-child(2) {
+            height: $smoke-item-long-height * $i;
+            animation-name: move-long-#{$size};
+          }
+
+          &:nth-child(1),
+          &:nth-child(3) {
+            animation-name: move-short-#{$size};
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes move-long-#{$size} {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      transform: translateY(-($smoke-item-long-height * $i));
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes move-short-#{$size} {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      transform: translateY(-($smoke-item-short-height * $i));
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

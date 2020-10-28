@@ -1,0 +1,18 @@
+.empty-state {
+  width: 220px;
+  height: 200px;
+  margin: 90px auto 0 auto;
+}
+.empty-state-text p:nth-child(1) {
+  color: #202020;
+  margin: 8px 0;
+  font-size: 16px;
+}
+.empty-state-text {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.empty-state-info {
+  color: #777;
+  margin: 8px 0;
+}

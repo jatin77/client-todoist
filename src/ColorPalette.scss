@@ -1,0 +1,31 @@
+$themes: (
+  light: (
+    backgroundColor: white,
+    textColor: #000,
+    descColor: #ccc,
+    headingBorderColor: #000,
+    buttonTextColor: #408bbd,
+    buttonTextHoverColor: #61b0e7,
+    buttonColor: #fff,
+    buttonBorder: 2px solid #408bbd,
+  ),
+  dark: (
+    backgroundColor: #000,
+    textColor: #fff,
+    descColor: #ccc,
+    headingBorderColor: #fff,
+    buttonTextColor: #aaa,
+    buttonTextHoverColor: #ddd,
+    buttonColor: #333,
+    buttonBorder: 1px solid #333,
+  ),
+);
+
+// Variable
+$lead-color: #db4c3f;
+$secondary-color: #ccc;
+$lead-gradient: linear-gradient(to bottom, #db4c3f, #db4c3f);
+$form-inputFields_bxShadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$btn-bxShadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);

@@ -1,0 +1,12 @@
+.guestLanding {
+  &__auth {
+    // left: 50%;
+    &__form {
+      max-width: 500px;
+    }
+  }
+  .wrapper {
+    max-width: 500px;
+    width: 100%;
+  }
+}

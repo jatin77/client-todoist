@@ -1,0 +1,31 @@
+.note {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  min-height: 65px;
+
+  &__content {
+    &--createdAt {
+      color: #d1453b;
+      font-size: 12px;
+    }
+    &--desc {
+      font-size: 15px;
+      line-height: 21px;
+      min-height: 24px;
+    }
+  }
+
+  &__actions {
+    display: none;
+  }
+
+  &:hover {
+    .note__actions {
+      display: block;
+    }
+  }
+}
